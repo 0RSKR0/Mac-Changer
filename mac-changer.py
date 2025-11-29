@@ -23,12 +23,7 @@ def is_valid_file(file_path: str) -> bool:
     return os.path.isfile(os.path.abspath(file_path))
 
 def is_valid_mac(mac_address: str) -> bool:
-    pattern = re.compile(r'''
-        ^(
-            ([0-9A-Fa-f]{2}[:]){5}[0-9A-Fa-f]{2} |     
-            ([0-9A-Fa-f]{4}\.){2}[0-9A-Fa-f]{4}         
-        )$
-    ''', re.VERBOSE)
+    pattern = re.compile(r'^[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5}$')
     return bool(pattern.match(mac_address))
 
 def get_current_mac(interface):
